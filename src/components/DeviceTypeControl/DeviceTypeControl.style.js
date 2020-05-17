@@ -3,24 +3,25 @@ import styled from '@emotion/styled';
 import View, { StyledView } from '../View';
 
 export const ContainerView = styled(View)`
-	border-radius: 8px;
 	background: #eeeeef;
+	border-radius: 8px;
 	display: inline-flex;
 	padding: 2px;
 	position: relative;
 
 	&:focus {
-		// outline: none;
+		box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.1);
+		outline: none;
 	}
 `;
 
 export const BackdropView = styled(View)`
 	background: white;
 	border-radius: 6px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.1);
 	height: 22px;
 	position: absolute;
 	transition: all 200ms ease-in-out;
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.1);
 	z-index: 1;
 `;
 
