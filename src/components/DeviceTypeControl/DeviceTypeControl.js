@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useRadioState, Radio, RadioGroup } from 'reakit/Radio';
+import { noop } from '../../utils';
+import Backdrop from './DeviceTypeControl.Backdrop';
 import {
-	BackdropView,
 	ButtonView,
 	ContainerView,
 	LabelView,
@@ -9,11 +10,18 @@ import {
 	LabelPlaceholderView,
 } from './DeviceTypeControl.style';
 
-export default function DeviceTypeControl() {
+export default function DeviceTypeControl({
+	onChange = noop,
+	value = 'desktop',
+}) {
 	const radio = useRadioState({
-		state: 'desktop',
+		state: value,
 		unstable_virtual: true,
 	});
+
+	useEffect(() => {
+		onChange(radio.state);
+	}, [onChange, radio.state]);
 
 	return (
 		<RadioGroup {...radio} aria-label="device-type" as={ContainerView}>
@@ -22,52 +30,6 @@ export default function DeviceTypeControl() {
 			<RadioButton {...radio} value="tablet" label="Tablet" />
 			<RadioButton {...radio} value="desktop" label="Desktop" isLast />
 		</RadioGroup>
-	);
-}
-
-function Backdrop(props) {
-	const { currentId, items } = props;
-	const [left, setLeft] = useState(0);
-	const [width, setWidth] = useState(0);
-	const [canAnimate, setCanAnimate] = useState(false);
-
-	useEffect(() => {
-		const firstItemNode = items[0];
-		const currentItemNode = items.find((item) => item.id === currentId);
-
-		const targetItemNode = (currentItemNode || firstItemNode)?.ref?.current;
-
-		if (!targetItemNode) return;
-
-		const {
-			x: parentX,
-		} = targetItemNode.offsetParent.getBoundingClientRect();
-		const {
-			width: offsetWidth,
-			x,
-		} = targetItemNode.getBoundingClientRect();
-		const offsetLeft = x - parentX;
-
-		setLeft(offsetLeft);
-		setWidth(offsetWidth);
-
-		if (!canAnimate) {
-			requestAnimationFrame(() => {
-				setCanAnimate(true);
-			});
-		}
-	}, [currentId, items, canAnimate]);
-
-	return (
-		<BackdropView
-			style={{
-				transform: `translateX(${left}px)`,
-				width,
-				left: 0,
-				transition: canAnimate ? null : 'none',
-			}}
-			role="presentation"
-		/>
 	);
 }
 
