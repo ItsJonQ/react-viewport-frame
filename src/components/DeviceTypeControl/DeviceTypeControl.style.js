@@ -10,7 +10,7 @@ export const ContainerView = styled(View)`
 	position: relative;
 
 	&:focus {
-		outline: none;
+		// outline: none;
 	}
 `;
 

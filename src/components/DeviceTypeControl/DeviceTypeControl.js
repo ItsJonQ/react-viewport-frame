@@ -12,16 +12,11 @@ import {
 export default function DeviceTypeControl() {
 	const radio = useRadioState({
 		state: 'desktop',
+		unstable_virtual: true,
 	});
 
 	return (
-		<RadioGroup
-			{...radio}
-			aria-label="device-type"
-			as={ContainerView}
-			focusable={true}
-			unstable_virtual={true}
-		>
+		<RadioGroup {...radio} aria-label="device-type" as={ContainerView}>
 			<Backdrop {...radio} />
 			<RadioButton {...radio} value="mobile" label="Mobile" isFirst />
 			<RadioButton {...radio} value="tablet" label="Tablet" />
