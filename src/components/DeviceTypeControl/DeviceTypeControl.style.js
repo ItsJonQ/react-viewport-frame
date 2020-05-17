@@ -20,8 +20,7 @@ export const BackdropView = styled(View)`
 	height: 22px;
 	position: absolute;
 	transition: all 200ms ease-in-out;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.1);
-	margin-left: -2px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.1);
 	z-index: 1;
 `;
 
@@ -42,20 +41,28 @@ export const ButtonView = styled(StyledView('button'))`
 	background: none;
 	border-radius: 6px;
 	border: none;
+	color: black;
 	cursor: pointer;
 	font-size: 12px;
 	height: 24px;
 	line-height: 1;
+	margin: -1px 0;
 	outline: none;
-	margin: -1px 2px;
-	padding: 0 10px;
+	padding: 0 12px;
 	position: relative;
+	transition: font-weight 60ms linear;
 	user-select: none;
 	z-index: 2;
 
 	&::-moz-focus-inner {
 		border: 0;
 	}
+
+	${({ isActive }) =>
+		isActive &&
+		css`
+			font-weight: bold;
+		`}
 `;
 
 export const SeparatorView = styled(View)`
@@ -71,4 +78,11 @@ export const SeparatorView = styled(View)`
 		css`
 			background: transparent;
 		`}
+`;
+
+export const LabelPlaceholderView = styled.div`
+	font-weight: bold;
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
 `;

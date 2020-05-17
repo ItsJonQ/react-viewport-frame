@@ -6,6 +6,7 @@ import {
 	ContainerView,
 	LabelView,
 	SeparatorView,
+	LabelPlaceholderView,
 } from './DeviceTypeControl.style';
 
 export default function DeviceTypeControl() {
@@ -43,7 +44,14 @@ function Backdrop(props) {
 
 		if (!targetItemNode) return;
 
-		const { offsetLeft, offsetWidth } = targetItemNode;
+		const {
+			x: parentX,
+		} = targetItemNode.offsetParent.getBoundingClientRect();
+		const {
+			width: offsetWidth,
+			x,
+		} = targetItemNode.getBoundingClientRect();
+		const offsetLeft = x - parentX;
 
 		setLeft(offsetLeft);
 		setWidth(offsetWidth);
@@ -59,7 +67,7 @@ function Backdrop(props) {
 		<BackdropView
 			style={{
 				transform: `translateX(${left}px)`,
-				width: width + 4,
+				width,
 				left: 0,
 				transition: canAnimate ? null : 'none',
 			}}
@@ -76,6 +84,7 @@ function RadioButton({ isFirst, label, value, ...props }) {
 			{!isFirst && <SeparatorView className="sep" isActive={isActive} />}
 			<Radio {...props} value={value} as={ButtonView} isActive={isActive}>
 				{label}
+				<LabelPlaceholderView aria-hidden>{label}</LabelPlaceholderView>
 			</Radio>
 		</LabelView>
 	);
