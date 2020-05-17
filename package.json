@@ -1,0 +1,63 @@
+{
+  "name": "react-frame-responsive",
+  "version": "0.0.0",
+  "description": "Module generated with Zero",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "sideEffects": false,
+  "private": false,
+  "scripts": {
+    "prestart": "zero prestart",
+    "build:es": "BUILD_FORMAT=es zero build -d dist/es",
+    "build:cjs": "BUILD_FORMAT=cjs zero build -d dist/cjs",
+    "build": "npm run build:cjs && npm run build:es -- --no-clean",
+    "lint": "zero lint",
+    "dev": "zero test",
+    "test": "zero test --coverage",
+    "test:coverage": "zero test --coverage",
+    "start": "npm run storybook",
+    "format": "zero format",
+    "validate": "zero validate",
+    "release": "zero release",
+    "version": "npm run build",
+    "precommit": "zero pre-commit",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "author": "Jon Quach <hello@jonquach.com> (https://jonquach.com)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsjonq/zero.git"
+  },
+  "bugs": {
+    "url": "https://github.com/itsjonq/zero/issues"
+  },
+  "homepage": "https://github.com/itsjonq/zero#readme",
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@itsjonq/zero": "4.1.10",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "babel-loader": "^8.1.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@emotion/core": "10.0.28",
+    "@emotion/styled": "10.0.27",
+    "react-frame": "2.2.22",
+    "reakit": "1.0.2"
+  }
+}
