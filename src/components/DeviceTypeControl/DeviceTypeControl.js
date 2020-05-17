@@ -59,7 +59,7 @@ function Backdrop(props) {
 		<BackdropView
 			style={{
 				transform: `translateX(${left}px)`,
-				width: `calc(${width}px + 4px)`,
+				width: width + 4,
 				left: 0,
 				transition: canAnimate ? null : 'none',
 			}}
@@ -72,7 +72,7 @@ function RadioButton({ isFirst, label, value, ...props }) {
 	const isActive = props.state === value;
 
 	return (
-		<LabelView isActive={isActive}>
+		<LabelView data-active={isActive}>
 			{!isFirst && <SeparatorView className="sep" isActive={isActive} />}
 			<Radio {...props} value={value} as={ButtonView} isActive={isActive}>
 				{label}

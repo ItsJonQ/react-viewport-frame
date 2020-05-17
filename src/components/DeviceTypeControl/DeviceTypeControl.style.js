@@ -19,7 +19,7 @@ export const BackdropView = styled(View)`
 	border-radius: 6px;
 	height: 22px;
 	position: absolute;
-	transition: all 200ms cubic-bezier(0.28, -0.25, 0.225, 1.25);
+	transition: all 200ms ease-in-out;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.1);
 	margin-left: -2px;
 	z-index: 1;
@@ -28,16 +28,13 @@ export const BackdropView = styled(View)`
 export const LabelView = styled(StyledView('label'))`
 	display: inline-flex;
 
-	${({ isActive }) => {
-		if (!isActive) return '';
-		return css`
-			+ * {
-				.sep {
-					background: transparent;
-				}
+	&[data-active='true'] {
+		+ * {
+			.sep {
+				background: transparent;
 			}
-		`;
-	}}
+		}
+	}
 `;
 
 export const ButtonView = styled(StyledView('button'))`
