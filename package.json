@@ -1,6 +1,6 @@
 {
   "name": "react-viewport-frame",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Viewport Frame component for React",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
