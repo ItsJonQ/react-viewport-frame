@@ -12,7 +12,7 @@ function Resizer({
 	viewport,
 }) {
 	const dragGestures = useDrag(({ delta, args, dragging }) => {
-		const [x] = delta;
+		const [x, y] = delta;
 		const [direction] = args;
 
 		if (!dragging) {
@@ -28,16 +28,20 @@ function Resizer({
 			onResize(currentViewport);
 			return;
 		}
-		const multiplier = direction === 'left' ? -2 : 2;
+		const baseValue = direction === 'down' ? y : x;
+		let multiplier = direction === 'left' ? -2 : 2;
+		if (direction === 'down') {
+			multiplier = 1;
+		}
 
-		const nextViewport = currentViewport + x * multiplier;
+		const nextViewport = currentViewport + baseValue * multiplier;
 
 		onResize(nextViewport);
 	});
 
 	return (
-		<ResizerView {...dragGestures(direction)}>
-			<DragHandleView />
+		<ResizerView {...dragGestures(direction)} direction={direction}>
+			<DragHandleView direction={direction} />
 		</ResizerView>
 	);
 }

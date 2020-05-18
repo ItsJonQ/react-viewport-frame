@@ -1,26 +1,25 @@
 import React, { useState } from 'react';
-import Frame from 'react-frame-component';
 import DeviceTypeControl from '../DeviceTypeControl';
 import ViewportControl from '../ViewportControl';
-import Resizer from './ResponsiveFrame.Resizer';
+import Canvas from './ResponsiveFrame.Canvas';
 import {
 	DeviceTypeControlWrapperView,
 	ViewportControlWrapperView,
-	FrameWrapperView,
-	FrameContainerView,
 } from './ResponsiveFrame.style';
 
-function ResponsiveFrame(props) {
-	const [viewport, setViewport] = useState(Infinity);
-	const deviceType = getDeviceTypeFromViewport(viewport);
-	const [isDragging, setIsDragging] = useState(false);
+function ResponsiveFrame({
+	width: widthProp = 'auto',
+	height: heightProp = 300,
+	...props
+}) {
+	const initialWidth = widthProp === 'auto' ? Infinity : widthProp;
+	const [viewportWidth, setViewportWidth] = useState(initialWidth);
+
+	const deviceType = getDeviceTypeFromViewport(viewportWidth);
 
 	const handleOnChangeDeviceType = (nextDeviceType) => {
-		setViewport(getViewportFromDeviceType(nextDeviceType));
+		setViewportWidth(getViewportFromDeviceType(nextDeviceType));
 	};
-
-	const width = viewport === Infinity ? '100%' : viewport;
-	const handleOnResize = (nextViewport) => setViewport(nextViewport);
 
 	return (
 		<div>
@@ -31,35 +30,15 @@ function ResponsiveFrame(props) {
 				/>
 			</DeviceTypeControlWrapperView>
 			<ViewportControlWrapperView>
-				<ViewportControl onChange={setViewport} />
+				<ViewportControl onChange={setViewportWidth} />
 			</ViewportControlWrapperView>
-			<FrameWrapperView>
-				<Resizer
-					direction="left"
-					viewport={viewport}
-					isDragging={isDragging}
-					onResizeStart={() => setIsDragging(true)}
-					onResizeEnd={() => setIsDragging(false)}
-					onResize={handleOnResize}
-				/>
-				<FrameContainerView
-					style={{
-						width,
-						pointerEvents: isDragging ? 'none' : null,
-						transition: isDragging ? 'none' : 'width 100ms linear',
-					}}
-				>
-					<Frame {...props} />
-				</FrameContainerView>
-				<Resizer
-					direction="right"
-					viewport={viewport}
-					isDragging={isDragging}
-					onResizeStart={() => setIsDragging(true)}
-					onResizeEnd={() => setIsDragging(false)}
-					onResize={handleOnResize}
-				/>
-			</FrameWrapperView>
+			<Canvas
+				width={widthProp}
+				height={heightProp}
+				{...props}
+				viewportWidth={viewportWidth}
+				setViewportWidth={setViewportWidth}
+			/>
 		</div>
 	);
 }
