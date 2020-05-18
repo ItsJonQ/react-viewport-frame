@@ -1,6 +1,5 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { useRadioState, Radio, RadioGroup } from 'reakit/Radio';
-import { noop } from '../../utils';
 import Backdrop from './SegmentControl.Backdrop';
 import {
 	ButtonView,
@@ -12,27 +11,17 @@ import {
 
 function SegmentControl({
 	label = 'SegmentControl',
-	onChange = noop,
 	options = [],
+	onChange,
 	value,
 }) {
-	const intialValue = value || options[0]?.value;
-	const initialValueRef = useRef(intialValue);
 	const containerRef = useRef();
-	const radio = useRadioState({
-		state: intialValue,
-		unstable_virtual: true,
-	});
-
-	/**
-	 * Work-around to create a controlled component for Reakit
-	 */
-	useEffect(() => {
-		if (intialValue !== initialValueRef.current) {
-			radio.setState(intialValue);
-			initialValueRef.current = intialValue;
-		}
-	}, [intialValue, radio]);
+	const reakitRadio = useRadioState({ unstable_virtual: true });
+	const radio = {
+		...reakitRadio,
+		state: value || reakitRadio.state,
+		setState: onChange || reakitRadio.setState,
+	};
 
 	return (
 		<RadioGroup
@@ -53,7 +42,6 @@ function SegmentControl({
 						key={option.value || index}
 						isFirst={isFirst}
 						isLast={isLast}
-						onClick={() => onChange(option.value)}
 					/>
 				);
 			})}
