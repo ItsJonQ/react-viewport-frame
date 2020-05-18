@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDrag } from 'react-use-gesture';
 import { noop } from '../../utils';
-import { ResizerView, DragHandleView } from './ResponsiveFrame.style';
+import { ResizerView, DragHandleView } from './ViewportFrame.style';
 
 function Resizer({
 	direction = 'left',
