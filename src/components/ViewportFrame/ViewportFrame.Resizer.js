@@ -26,8 +26,8 @@ function Resizer({
 		if (!isDragging) {
 			onResizeStart();
 			onResize(currentViewport);
-			return;
 		}
+
 		const baseValue = direction === 'down' ? y : x;
 		let multiplier = direction === 'left' ? -2 : 2;
 		if (direction === 'down') {
