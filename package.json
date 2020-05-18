@@ -17,7 +17,7 @@
     "test:coverage": "zero test --coverage",
     "start": "npm run storybook",
     "format": "zero format",
-    "validate": "zero validate",
+    "validate": "zero link && zero build",
     "release": "zero release",
     "version": "npm run build",
     "precommit": "zero pre-commit",
