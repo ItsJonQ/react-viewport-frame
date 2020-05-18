@@ -1,7 +1,7 @@
 {
-  "name": "react-frame-responsive",
+  "name": "react-viewport-frame",
   "version": "0.0.0",
-  "description": "Module generated with Zero",
+  "description": "Viewport Frame component for React",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "sideEffects": false,
@@ -32,12 +32,12 @@
   "author": "Jon Quach <hello@jonquach.com> (https://jonquach.com)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/itsjonq/zero.git"
+    "url": "git+https://github.com/itsjonq/viewport-frame.git"
   },
   "bugs": {
-    "url": "https://github.com/itsjonq/zero/issues"
+    "url": "https://github.com/itsjonq/viewport-frame/issues"
   },
-  "homepage": "https://github.com/itsjonq/zero#readme",
+  "homepage": "https://github.com/itsjonq/viewport-frame#readme",
   "keywords": [],
   "license": "MIT",
   "devDependencies": {

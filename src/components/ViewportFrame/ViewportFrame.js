@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import DeviceTypeControl from '../DeviceTypeControl';
 import ViewportControl from '../ViewportControl';
-import Canvas from './ResponsiveFrame.Canvas';
+import Canvas from './ViewportFrame.Canvas';
 import {
 	DeviceTypeControlWrapperView,
 	ViewportControlWrapperView,
-} from './ResponsiveFrame.style';
+} from './ViewportFrame.style';
 
-function ResponsiveFrame({
+function ViewportFrame({
 	width: widthProp = 'auto',
 	height: heightProp = 300,
 	...props
@@ -56,4 +56,4 @@ function getViewportFromDeviceType(deviceType) {
 	return 1024;
 }
 
-export default ResponsiveFrame;
+export default ViewportFrame;

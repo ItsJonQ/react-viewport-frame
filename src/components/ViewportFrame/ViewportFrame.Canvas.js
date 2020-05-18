@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Frame from 'react-frame-component';
 import { noop } from '../../utils';
-import Resizer from './ResponsiveFrame.Resizer';
+import Resizer from './ViewportFrame.Resizer';
 import {
 	FrameWrapperView,
 	FrameContainerView,
 	FrameBorderView,
-} from './ResponsiveFrame.style';
+} from './ViewportFrame.style';
 
 function Canvas({
 	height: heightProp = 300,

@@ -1,1 +1,3 @@
-# react-frame-responsive
+# React Viewport Frame
+
+> Viewport Frame component for React
