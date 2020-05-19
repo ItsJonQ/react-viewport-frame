@@ -19,7 +19,7 @@ function SegmentControl({
 	const reakitRadio = useRadioState({ unstable_virtual: true });
 	const radio = {
 		...reakitRadio,
-		state: value || reakitRadio.state,
+		state: value || reakitRadio.state || options[0]?.value,
 		setState: onChange || reakitRadio.setState,
 	};
 
