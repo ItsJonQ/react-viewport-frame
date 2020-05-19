@@ -32,12 +32,12 @@
   "author": "Jon Quach <hello@jonquach.com> (https://jonquach.com)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/itsjonq/viewport-frame.git"
+    "url": "git+https://github.com/itsjonq/react-viewport-frame.git"
   },
   "bugs": {
-    "url": "https://github.com/itsjonq/viewport-frame/issues"
+    "url": "https://github.com/itsjonq/react-viewport-frame/issues"
   },
-  "homepage": "https://github.com/itsjonq/viewport-frame#readme",
+  "homepage": "https://github.com/itsjonq/react-viewport-frame#readme",
   "keywords": [],
   "license": "MIT",
   "devDependencies": {
